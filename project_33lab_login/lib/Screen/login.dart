@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:project_33lab_login/data/join_or_login.dart';
 import 'package:project_33lab_login/helper/login_background.dart';
-
+import 'package:provider/provider.dart';
 
 class LoginPage extends StatelessWidget {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -18,6 +19,7 @@ class LoginPage extends StatelessWidget {
         children: <Widget>[
           CustomPaint(
             size:size,
+            painter: LoginBackground(isJoin:Provider.of<JoinOrLogin>(context).isJoin),
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.center,
