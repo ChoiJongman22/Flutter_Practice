@@ -72,34 +72,39 @@ class _AddNewTaskState extends State<AddNewTask> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text('Title', style: Theme.of(context).textTheme.subtitle1),
-        TextFormField(
-          initialValue: _inputDescription == null ? null : _inputDescription,
-          decoration: InputDecoration(
-            hintText: "Describe your task",
+        Form(
+          key:_formKey,
+          child: TextFormField(
+            initialValue: _inputDescription == null ? null : _inputDescription,
+            decoration: InputDecoration(
+              hintText: "Describe your task",
+            ),
+            validator: (value) {
+              if (value.isEmpty) {
+                return "Please enter some text";
+              }
+              return null;
+            },
+            onSaved: (value) {
+              _inputDescription = value;
+            },
           ),
-          validator: (value) {
-            if (value.isEmpty) {
-              return "Please enter some text";
-            }
-            return null;
-          },
-          onSaved: (value) {
-            _inputDescription = value;
-          },
         ),
         SizedBox(
           height: 20,
         ),
         Text('Due date', style: Theme.of(context).textTheme.subtitle1),
-        TextFormField(
-          onTap: () {
-            _pickUserDueDate();
-          },
-          readOnly: true,
-          decoration: InputDecoration(
-            hintText: _selectedDate == null
-                ? 'Provider your due date'
-                : DateFormat.yMMMd().format(_selectedDate).toString(),
+        Form(
+          child: TextFormField(
+            onTap: () {
+              _pickUserDueDate();
+            },
+            readOnly: true,
+            decoration: InputDecoration(
+              hintText: _selectedDate == null
+                  ? 'Provider your due date'
+                  : DateFormat.yMMMd().format(_selectedDate).toString(),
+            ),
           ),
         ),
         Container(

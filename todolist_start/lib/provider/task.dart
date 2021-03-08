@@ -32,7 +32,7 @@ class TaskProvider with ChangeNotifier{
     return _toDoList.firstWhere((task) => task.id==id);
   }
   void createNewTask(Task task){
-    final newTask=Task(
+    final newTask=Task( //생성자로 const변수 선언
       id:task.id,
       desciption: task.desciption,
       dueDate: task.dueDate
@@ -41,11 +41,13 @@ class TaskProvider with ChangeNotifier{
     notifyListeners();
   }
   void editTask(Task task){
+    //edit의 개념을 삭제하고 만드는 걸로 함.
     removeTask(task.id);
     createNewTask(task);
   }
 
   void removeTask(String id){
+
     _toDoList.removeWhere((task) => task.id==id);
     notifyListeners();
   }

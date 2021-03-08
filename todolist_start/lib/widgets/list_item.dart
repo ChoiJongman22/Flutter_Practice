@@ -76,6 +76,7 @@ class _ListItemState extends State<ListItem> {
                     IconButton(
                       icon: Icon(Icons.edit),
                       onPressed: (){
+
                         showModalBottomSheet(context: context,
                         builder: (_)=>AddNewTask(
                           id: widget.task.id,
