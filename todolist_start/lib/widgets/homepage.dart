@@ -11,7 +11,11 @@ class HomePage extends StatelessWidget {
         actions: <Widget>[
           IconButton(
               onPressed: () {
-                showModalBottomSheet(context: context);
+                showModalBottomSheet(context: context,
+                    builder: (_)=>AddNewTask(
+                      isEditmode: false,
+                    )
+                );
               },
               icon: Icon(Icons.add))
         ],
